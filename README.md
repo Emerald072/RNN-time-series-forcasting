@@ -1,4 +1,4 @@
-# RNN-time-series-forcasting
+ # RNN-time-series-forcasting
 Time series forcasting future stock price 
 
 ## Dataset
