@@ -69,6 +69,7 @@ x_train, y_train = create_sequences(data["training_data"], sequence_length=50)
 x_test, y_test = create_sequences(data["testing_data"], sequence_length=30)
 
 # Define Value
+model_type = "GRU"
 input_size = 1
 num_layers = 3  # Increased number of layers
 hidden_size = 128  # Increased number of hidden units
@@ -78,7 +79,7 @@ batch_size = 128
 
 # Prepare the model and put it on device (gpu or cpu)
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-model = get_rnn_model('LSTM',input_size, hidden_size, num_layers, dropout)
+model = get_rnn_model(model_type,input_size, hidden_size, num_layers, dropout)
 model = model.to(device)
 
 # Defining my loss/cost function
@@ -92,7 +93,7 @@ train_loader = create_dataloader(x_train, y_train, batch_size=batch_size, shuffl
 test_loader = create_dataloader(x_test, y_test, batch_size=batch_size, shuffle=True)
 
 # The training loop
-num_epochs = 15  # Increased number of epochs
+num_epochs = 100  # Increased number of epochs
 train_hist = []
 test_hist = []
 
